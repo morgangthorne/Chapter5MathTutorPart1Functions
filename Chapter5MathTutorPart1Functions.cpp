@@ -36,6 +36,7 @@ int RandomeNumberGenerator(int x, int y) {
 
 void DisplayMessage(string text) {
     cout << text << endl;
+
 }
 
 bool GetRepeatInfo() {
