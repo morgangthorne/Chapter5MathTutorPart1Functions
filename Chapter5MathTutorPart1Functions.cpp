@@ -46,11 +46,11 @@ bool GetRepeatInfo() {
 }
 
 void DisplayEquation(int Rx, int Ry, int result) {
-    cout << Rx << endl;
-    cout << Ry << endl;
+    cout << setw(9) << right << Rx << endl;
+    cout << "+" << setw(8) << right << Ry << endl;
     cout << "_________" << endl;
     cin.get();
-    cout << result;
+    cout << setw(9) << right << result << endl;
 }
 
 
