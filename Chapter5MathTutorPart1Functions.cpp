@@ -18,20 +18,19 @@ using namespace std;
 
 void DisplayMessage(string text);
 bool GetRepeatInfo();
-int RandomNumberGenerator();
-void ValidateEntry();
-void DisplayEquation(); 
-void DisplayLine(string text);
+int RandomNumberGenerator(int x, int y);
+//void ValidateEntry();
+//void DisplayEquation(); 
+//void DisplayLine(string text);
 
 
 
-int RandomeNumberGenerator(int x, int y) {
+int RandomNumberGenerator(int x, int y) {
     random_device R;
-    uniform_int_distribution<int> randomInt(0, 1000);
+    uniform_int_distribution<int> randomInt(x, y);
 
-    int Xvariable = randomInt(x);
-    int Yvariable = randomInt(x);
-    int sum = (Xvariable + Yvariable);
+    return randomInt(R);
+    
 }
 
 void DisplayMessage(string text) {
@@ -46,25 +45,28 @@ bool GetRepeatInfo() {
     return (choice == 'Y' || choice == 'y');
 }
 
-void DisplayEquation(int Rx, int Ry) {
-    cout << Xvariable
-
-
-
+void DisplayEquation(int Rx, int Ry, int result) {
+    cout << Rx << endl;
+    cout << Ry << endl;
+    cout << "_________" << endl;
+    cin.get();
+    cout << result;
 }
 
 
 int main()
 {
     DisplayMessage("\t Welcome to Math Tutor V1.0");
-    bool repeat = true;
+    char repeat = 'Y';
+    int Xvariable;
+    int Yvariable;
     while (repeat) {
-        int Xvariable = RandomNumberGenerator();
-        int Yvariable = RandomNumberGenerator();
+        Xvariable = RandomNumberGenerator(0, 100);
+        Yvariable = RandomNumberGenerator(0, 100);
 
-        DisplayEquation(Xvariable, Yvariable);
+        DisplayEquation(Xvariable, Yvariable, Xvariable + Yvariable);
 
-
+        repeat = GetRepeatInfo();
     }
 }
 
