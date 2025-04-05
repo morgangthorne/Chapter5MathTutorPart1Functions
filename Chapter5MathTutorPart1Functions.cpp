@@ -19,12 +19,11 @@ using namespace std;
 void DisplayMessage(string text);
 bool GetRepeatInfo();
 int RandomNumberGenerator(int x, int y);
-//void ValidateEntry();
-//void DisplayEquation(); 
-//void DisplayLine(string text);
+void DisplayEquation(); 
 
 
 
+//Function for random number generator. Gives X and Y variable random value
 int RandomNumberGenerator(int x, int y) {
     random_device R;
     uniform_int_distribution<int> randomInt(x, y);
@@ -33,11 +32,13 @@ int RandomNumberGenerator(int x, int y) {
     
 }
 
+//Function displays Welcome message
 void DisplayMessage(string text) {
     cout << text << endl;
 
 }
 
+//Allows user to choose whether they want another equation to solve or to end program
 bool GetRepeatInfo() {
     char choice;
     cout << "Would you like to repeat Y/N: ";
@@ -45,6 +46,7 @@ bool GetRepeatInfo() {
     return (choice == 'Y' || choice == 'y');
 }
 
+//Displays equation for user, user has to press enter to get answer
 void DisplayEquation(int Rx, int Ry, int result) {
     cout << setw(9) << right << Rx << endl;
     cout << "+" << setw(8) << right << Ry << endl;
@@ -54,10 +56,10 @@ void DisplayEquation(int Rx, int Ry, int result) {
     cout << setw(9) << right << result << endl;
 }
 
-
+//Main function, displays welcome message, while statement allows equation to be displayed and then repeated or ended
 int main()
 {
-    DisplayMessage("\t Welcome to Math Tutor V1.0");
+    DisplayMessage("\t Welcome to Math Tutor V1.0\nPress Enter to check sum after working the problem ");
     char repeat = 'Y';
     int Xvariable;
     int Yvariable;
@@ -66,28 +68,9 @@ int main()
         Yvariable = RandomNumberGenerator(0, 100);
 
         DisplayEquation(Xvariable, Yvariable, Xvariable + Yvariable);
-
+        
         repeat = GetRepeatInfo();
     }
 }
 
-/*
-int main()
-{
-   //Variables for the equation
-    int x = 247;
-    int y = 129;
-    int sum = (x + y);
 
-    //Output for the question
-    cout << "Solve the equation below:" << endl;
-    cout << setw(10) << x << endl << setw(7) << "+" << y << endl << "Press Enter to check your answer: ";
-
-    //Allows user to enter anykey they want to check their answer
-    cin.ignore();
-
-    //Equation with answer
-    cout << setw(10) << x << endl << setw(7) << "+" << y << endl << setw(10) << "---" << endl << setw(10) << sum << endl;
-
-}
-*/
