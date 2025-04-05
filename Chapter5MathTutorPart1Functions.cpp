@@ -19,7 +19,7 @@ using namespace std;
 void DisplayMessage(string text);
 bool GetRepeatInfo();
 int RandomNumberGenerator(int x, int y);
-void DisplayEquation(); 
+ 
 
 
 
@@ -46,25 +46,20 @@ bool GetRepeatInfo() {
     return (choice == 'Y' || choice == 'y');
 }
 
-//Displays equation for user, user has to press enter to get answer
-void DisplayEquation(int Rx, int Ry, int result) {
+//Displays equation then prompts user to input their answer, and return boolean indicationg whether wrong or correct
+bool PromptUserAnswerValidate(int Rx, int Ry, int result) {
+    int answer;
     cout << setw(9) << right << Rx << endl;
     cout << "+" << setw(8) << right << Ry << endl;
-    cout << "_________";
-    cin.ignore();
-    cin.get();
-    cout << setw(9) << right << result << endl;
-}
-
-//Prompt user to input their answer, and return boolean flag indicationg whether wrong or correct
-bool PromptUserAnswerValidate(int Rx, int Ry, int result, int answer) {
-    cout << setw(9) << right << Rx << endl;
-    cout << "+" << setw(8) << right << Ry << endl;
-    cout << "_________";
-    cin.ignore();
-    cin.get();
+    cout << "_________\n";
+    //cin.ignore();
+    //cin.get();
     cin >> answer;
-    cout << setw(9) << right << result << endl;
+    if (answer == result) {
+        return true;
+    }
+    else
+        return false;
 }
 
 //Main function, displays welcome message, while statement allows equation to be displayed and then repeated or ended
@@ -75,22 +70,28 @@ int main()
     int Xvariable;
     int Yvariable;
     int answer;
-    //bool answercorrect;
+    int result;
+    bool isanswercorrect;
     while (repeat) {
         Xvariable = RandomNumberGenerator(0, 100);
         Yvariable = RandomNumberGenerator(0, 100);
 
-        DisplayEquation(Xvariable, Yvariable, Xvariable + Yvariable);
-        //isanswercorrect = bool PromptUserAnswerValidate(Xvariable, Yvariable, Xvariable + Yvariable){
-        //if (isanswercorrect) {
-        // cout << "congrats";
-        //else 
-        // cout << "you got it wrong";
-        // }
-        // cout << "Try again?";
+        //Bool isanswercorrect will return as true or false if user answer is correct or incorrect
+        isanswercorrect = PromptUserAnswerValidate(Xvariable, Yvariable, result = Xvariable + Yvariable);
+        
+        
+        if (isanswercorrect) {
+            cout << "Correct!\n";
+        }
+        else {
+         cout << "Incorrect!\nThe sum of " << Xvariable << " + " << Yvariable << " = " << result << endl;
+         }
+         
         
         repeat = GetRepeatInfo();
+        
     }
+    
 }
 
 
