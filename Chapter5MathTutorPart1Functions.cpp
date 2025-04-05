@@ -56,18 +56,38 @@ void DisplayEquation(int Rx, int Ry, int result) {
     cout << setw(9) << right << result << endl;
 }
 
+//Prompt user to input their answer, and return boolean flag indicationg whether wrong or correct
+bool PromptUserAnswerValidate(int Rx, int Ry, int result, int answer) {
+    cout << setw(9) << right << Rx << endl;
+    cout << "+" << setw(8) << right << Ry << endl;
+    cout << "_________";
+    cin.ignore();
+    cin.get();
+    cin >> answer;
+    cout << setw(9) << right << result << endl;
+}
+
 //Main function, displays welcome message, while statement allows equation to be displayed and then repeated or ended
 int main()
 {
-    DisplayMessage("\t Welcome to Math Tutor V1.0\nPress Enter to check sum after working the problem ");
+    DisplayMessage("\t Welcome to Math Tutor V1.0\nEnter in your answer to check whether its right or wrong ");
     char repeat = 'Y';
     int Xvariable;
     int Yvariable;
+    int answer;
+    //bool answercorrect;
     while (repeat) {
         Xvariable = RandomNumberGenerator(0, 100);
         Yvariable = RandomNumberGenerator(0, 100);
 
         DisplayEquation(Xvariable, Yvariable, Xvariable + Yvariable);
+        //isanswercorrect = bool PromptUserAnswerValidate(Xvariable, Yvariable, Xvariable + Yvariable){
+        //if (isanswercorrect) {
+        // cout << "congrats";
+        //else 
+        // cout << "you got it wrong";
+        // }
+        // cout << "Try again?";
         
         repeat = GetRepeatInfo();
     }
